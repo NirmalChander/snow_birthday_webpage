@@ -1,0 +1,15 @@
+{
+  "name": "snow_birthday_webpage",
+  "version": "1.0.0",
+  "main": "script2.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Reason for the Celebration</title>
+    <script type="module">
+        import { balloons } from 'https://cdn.jsdelivr.net/npm/balloons-js@0.0.1/+esm';
+        window.onload = () => {
+            balloons();
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        @font-face {
+            font-family: 'CustomFont';
+            src: url('font4.otf');
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+            height: 100vh;
+            background-color: black;
+            color: white;
+            font-family: CustomFont, Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100%;
+            padding: 20px;
+            position: relative;
+        }
+
+        .main-message {
+            font-size: 3rem;
+            line-height: 1.5;
+            color: #ffdc73;
+            text-shadow: 0 0 10px #ffd700, 0 0 30px #ff8c00;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .main-message .highlight {
+            font-size: 3.5rem;
+            color: #ffd700;
+            text-shadow: 0 0 15px #ffcc33, 0 0 40px #ffa500;
+        }
+
+        .sub-message {
+            font-size: 1.8rem;
+            margin: 20px 0;
+            color: #ffffff;
+            max-width: 600px;
+            animation: fadeIn 2s ease-in-out, typing 4s steps(40, end);
+            overflow: hidden;
+            white-space: wrap;
+        }
+
+        /* Fade Out Animation */
+        .fade-out {
+            opacity: 1;
+            transition: opacity 2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 50%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="container">
+        <!-- Main Message -->
+        <div class="main-message">
+            Today, the world celebrates you, <span class="highlight">Snow!</span> 🎉
+        </div>
+        <div class="sub-message" id="sub-message"></div>
+    </div>
+
+    <script>
+
+        function startConfetti() {
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    confetti({
+                        particleCount: 200,
+                        spread: 100,
+                        origin: { x: Math.random(), y: Math.random() - 0.2 },
+                    });
+                }, i * 500);
+            }
+        }
+        startConfetti();
+        // Function to automatically proceed to the next page with fade-out effect
+        function proceed() {
+            // Trigger the fade-out effect by changing the opacity of the body
+            document.body.style.opacity = '20'; // Fade out the entire body
+
+            // After fade-out animation, navigate to the next page
+            setTimeout(() => {
+                window.location.href = "/page2-2.html"; // Replace with the actual route for the next page
+            }, 2000); // Wait for 2 seconds (duration of fade-out animation)
+        }
+
+
+        // Typing animation function
+        function typeMessage(elementId, message, delay = 0) {
+            const element = document.getElementById(elementId);
+            let i = 0;
+            element.textContent = ''; // Clear the content initially
+
+            setTimeout(() => {
+                const interval = setInterval(() => {
+                    element.textContent += message[i];
+                    i++;
+                    if (i === message.length) {
+                        clearInterval(interval); // Stop once the message is fully displayed
+                    }
+                }, 100); // Adjust typing speed
+            }, delay);
+        }
+
+        // Define the message to type
+        const message = "The kindest,beautiful and most wonderful girl I know.";
+        typeMessage('sub-message', message, 500);
+
+        // Automatically proceed after 5 seconds (after message typing)
+        setTimeout(proceed, 7000);
+    </script>
+</body>
+
+</html>

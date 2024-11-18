@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My ❤️</title>
+    <script type="module" src="sparkly-text.js"></script>
+    <script type="module">
+        import { balloons } from 'https://cdn.jsdelivr.net/npm/balloons-js@0.0.1/+esm';
+        window.onload = () => {
+          balloons({ count: 15 });
+          balloons({ count: 15 }); // Add floating balloons
+        };
+      </script>
+    <style>
+
+        @font-face {
+            font-family: arial;
+            src: url('font2.ttf');
+        }
+        body {
+            margin: 0;
+            overflow: hidden;
+            height: 100vh;
+            background-color: black;
+            position: relative;
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            transition: opacity 1s ease; /* Smooth fade effect */
+        }
+
+        .background.hidden {
+            opacity: .1; /* Hide the background during transition */
+        }
+
+        .container {
+            margin: 0;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-size: cover;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            position:absolute;
+        }
+
+        .message{
+            padding-top: 50vh;
+            display: block;
+            margin: auto;
+            padding: auto;
+            font-size: 2.5rem;
+            text-align: center;
+
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #ffd00010, 0 0 20px #ffa60010, 0 0 40px #ff990010;
+            }
+            to {
+                text-shadow: 0 0 10px #ffd000c4, 0 0 20px #ffa600c5, 0 0 40px #ff990090;
+            }
+        }
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: red;
+            transform: rotate(-45deg);
+            animation: fall linear infinite, sparkle 2s ease-in-out infinite;
+            box-shadow: 0 0 10px rgba(190, 0, 0, 0.6), 0 0 20px rgba(190, 0, 0, 0.4);
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: red;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(190, 0, 0, 0.6), 0 0 20px rgba(190, 0, 0, 0.4);
+        }
+
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: 10px;
+            top: 0;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100vw }
+        }
+
+        /* The typewriter cursor effect */
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: orange; }
+        }
+
+        .message span {
+            padding-left: 15px;
+            padding-right: 20px;
+            margin-bottom: 40px;
+            overflow: hidden;
+            letter-spacing: .1em;
+
+            animation: 
+            typing 5s steps(60, end),
+            blink-caret .75s step-end infinite;
+        }
+
+        .tap-to-continue {
+            margin-top: 40px;
+            font-size: 1.8rem;
+            color: white;
+            cursor: pointer;
+            display: none;
+            text-align: center;
+            animation: glow 1s infinite alternate;
+        }
+
+        .tap-to-continue:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(var(--random-rotate));
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(var(--random-rotate));
+                opacity: 0;
+            }
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(190, 0, 0, 0.6), 0 0 20px rgba(190, 0, 0, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 15px rgba(190, 0, 0, 0.8), 0 0 30px rgba(190, 0, 0, 0.7);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background" id="background"></div>
+    <div class="container">
+        <div class="message">
+            <span id="message">It's not just any ordinary day today...</span>
+            <div class="tap-to-continue" id="tap-message">Tap to continue</div>
+        </div>
+        <button class="action-button" style="display: none;">Begin the Celebration!</button>
+    </div>
+    <!-- Starry Night Background -->
+    <div class="stars" id="stars"></div>
+
+    <script>
+
+        // List of image URLs
+        const images = [
+            '1.jpg',
+            '2.jpg',
+            '3.jpg',
+            '4.jpg',
+            '5.jpg',
+            '6.jpg',
+            '7.jpg',
+            '8.jpg',
+            '9.jpg',
+            '10.jpg',
+        ];
+
+        let currentIndex = 0; // Start with the first image
+
+
+        const background = document.getElementById('background');
+
+        // Function to change the background image
+        const changeBackground = () => {
+            // Select a random image
+            const currentImage = images[currentIndex];
+
+            // Apply fade-out effect
+            background.classList.add('hidden');
+
+            // Wait for fade-out to complete, then change the image and fade in
+            setTimeout(() => {
+                background.style.backgroundImage = `
+                    linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 1)), 
+                    url('${currentImage}')`;
+                background.classList.remove('hidden');
+            }, 2000); // Match the duration of the fade-out transition
+            currentIndex = (currentIndex + 1) % images.length;
+        };
+
+        // Change the background every 10 seconds
+        setInterval(changeBackground, 7000);
+
+        // Initial background setup
+        changeBackground();
+
+        const sections = 15; // Number of sections to divide the screen width
+
+        const generateHeart = () => {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+
+            // Evenly divide the screen into sections and pick one
+            const sectionWidth = 100 / sections; // Section width in viewport width units
+            const section = Math.floor(Math.random() * sections); // Pick a random section
+            const offsetWithinSection = Math.random() * sectionWidth; // Offset within the section
+            const leftPosition = section * sectionWidth + offsetWithinSection; // Calculate final left position
+
+            // Apply position and rotation
+            heart.style.left = leftPosition + 'vw';
+            heart.style.animationDuration = Math.random() * 1.5 + 3 + 's'; // Random duration
+            heart.style.setProperty('--random-rotate', ((Math.random() < 0.5 ? -95 : 0) + (Math.random() * 135 )) + 'deg');
+
+            document.body.appendChild(heart);
+
+            // Remove heart after animation
+            setTimeout(() => {
+                heart.remove();
+            }, 2500); // Match longest animation duration
+        };
+
+        // Generate hearts periodically
+        setInterval(generateHeart, 400);
+
+                    // List of messages
+                    const messages = [
+            "It's not just any ordinary day today...",
+            "Because a beautiful Angel was born on this day 🧚🏼",
+            "It's a day filled with joy, love, and a million reasons to smile!"
+        ];
+
+        let messageIndex = 0;
+
+        // Typing animation function
+        function typeMessage(elementId, message, delay = 0) {
+            const element = document.getElementById(elementId);
+            let i = 0;
+            element.textContent = ''; // Clear the element before typing starts
+            const interval = setInterval(() => {
+                element.textContent += message[i];
+                i++;
+                if (i === message.length) {
+                    clearInterval(interval);
+                    showTapMessage();  // Show "Tap to continue" once the message finishes
+                }
+            }, 100); // Adjust typing speed here (100ms per character)
+        }
+
+        function showTapMessage() {
+            const tapMessage = document.getElementById('tap-message');
+            tapMessage.style.display = 'block'; // Show the tap to continue message
+            tapMessage.addEventListener('click', () => {
+                // Hide the current tap message and type the next message
+                tapMessage.style.display = 'none';
+                if (messageIndex <= messages.length) {
+                    typeMessage('message', messages[messageIndex]);
+                    messageIndex++;
+                } else {
+                    window.location.href = "/page2-1.html";
+                }
+            });
+        }
+
+        // Start the typing animation for the first message
+        typeMessage('message', messages[messageIndex]);
+        messageIndex++;
+    </script>
+</body>
+</html>

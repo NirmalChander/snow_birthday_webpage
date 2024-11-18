@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My ❤️</title>
+    <style>
+        @font-face {
+            font-family: 'CustomFont';
+            src: url('font2.ttf');
+        }
+
+        @font-face {
+            font-family: 'HandwrittenFont';
+            src: url('font3.ttf'); /* Replace with a handwriting-style font */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'CustomFont', 'Cursive', Arial, sans-serif;
+            background: url('paper.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #4b2c1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .letter-container {
+            width: 80%;
+            margin: 50px 10px;
+            padding: 30px;
+            background: rgba(255, 239, 213, 0.95); /* Old paper color */
+            border: 2px solid #d2b48c; /* A light brown border for realism */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+
+
+        .letter-container::before,
+        .letter-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('paper.png') no-repeat center/cover;
+            z-index: -1;
+        }
+
+        .letter-container::before {
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+        }
+
+        .letter-container::after {
+            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0% 90%);
+        }
+
+        .letter-content {
+            line-height: 1.5rem;
+            font-size: 1.5rem;
+            word-wrap: break-word;
+        }
+
+        
+
+        .wish {
+            margin-top: 30px;
+            font-size: 1.9rem;
+            text-align: center;
+        }
+
+        .bold{
+            font-size: 1.9rem;
+        }
+
+        .signature {
+            margin-top: 30px;
+            font-size: 1.6rem;
+            text-align: right;
+        }
+
+        .signature2 {
+            font-family: 'HandwrittenFont','Cursive',Arial, sans-serif;
+            margin-right: 35px;
+            margin-top: 0px;
+            font-size: 3rem;
+            text-align: right;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .next-button {
+            padding: 10px 20px;
+            font-size: 1.5rem;
+            font-family: CustomFont;
+            background: none;
+            border: none;
+            color: #4b2c1a;
+            cursor: pointer;
+            animation:  sparkle 3s alternate infinite; 
+        }
+
+        .next-button:hover {
+            background: #a16b43;
+        }
+
+         
+        @keyframes sparkle {
+            from {
+                text-shadow: 0 0 10px #00000000, 0 0 20px #00000000, 0 0 30px #00000000;
+            }
+            to {
+                text-shadow: 0 0 10px #ffd00070, 0 0 20px #ffd00070, 0 0 30px #ffd00070;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="letter-container">
+        
+        <div class="letter-content">
+            <div class="bold">
+                <p>Dear Snow,</p>
+            </div>
+            <p>
+                From the very first moment I met you, I knew there was something extraordinary about you.
+                Your laughter is the kind of melody that brightens even the dullest days. 
+            </p>
+            <p>
+                You are an angel in human form—a source of light, kindness, and beauty in this world.
+                Every conversation with you, every shared moment, feels like a precious gift.
+            </p>
+            <p>
+                Today, as the world celebrates your special day, I find myself craving to be there with you, 
+                to see your laughter, to share your joy, and to make this day as beautiful as you are. 
+                It pains me that I can’t celebrate with you in person, but know that my heart is with you every moment.
+            </p>
+            <p>
+                I am endlessly grateful to have you in my life.
+            </p>
+            <p>
+                You are not just beautiful—you are stunning, both inside and out. You make life feel magical, 
+                and I feel so fortunate to be a part of your journey. If there’s one thing I wish for you today, 
+                it’s to know how special you are to me.
+            </p>
+            <p>
+                Thank you for being the incredible person you are.
+            </p>
+            <p>
+                Every moment with you is like living in a beautiful dream.
+            </p>
+            <p>
+                You’re a treasure, a gift lucky enough to know you.
+            </p>
+            <p>
+                You are, and always will be, the most important person in my life.
+            </p>
+            <div class="wish">
+                <p>
+                    Happy Birthday, Snow.
+                </p>
+            </div>
+            <div class="signature">
+                With all my love,
+            </div>
+            <div class="signature signature2">
+                <br>Nirmal
+            </div>
+        </div>
+        <div class="button-container">
+            <button class="next-button" onclick="proceed()">Tap to continue...</button>
+        </div>
+    </div>
+
+    <script>
+        function proceed() {
+            window.location.href = "/page3.html"; // Replace with the actual route for the next page
+        }
+    </script>
+</body>
+
+</html>

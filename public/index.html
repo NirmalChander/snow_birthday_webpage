@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Love ❤️</title>
+</head>
+<style>
+    @font-face {
+        font-family: arial;
+        src: url("font4.otf");
+    }
+    body {
+        font: url('font3.ttf');
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 92vh;
+        background: black;
+        color: white;
+        font-family: Arial, sans-serif;
+    }
+
+    .heart {
+        border-bottom-left-radius: 12px;
+        height: 100px;
+        width: 100px;
+        background: red;
+        position: relative;
+        transform: rotate(-45deg);
+        box-shadow: -10px 10px 90px rgba(2195, 0, 0);
+        animation: heart 1s linear infinite;
+    }
+
+    @keyframes heart {
+        0% {
+            transform: rotate(-45deg) scale(1.00);
+        }
+        80% {
+            transform: rotate(-45deg) scale(0.90);
+        }
+        100% {
+            transform: rotate(-45deg) scale(0.85);
+        }
+    }
+
+    .heart::before {
+        content: "";
+        position: absolute;
+        height: 100px;
+        width: 100px;
+        background: red;
+        top: -55%;
+        border-radius: 50px;
+        box-shadow: -10px -20px 180px rgba(255, 0, 0);
+    }
+
+    .heart::after {
+        content: "";
+        position: absolute;
+        height: 100px;
+        width: 100px;
+        background: red;
+        right: -55%;
+        border-radius: 50px;
+        box-shadow: 20px 20px 180px rgb(255, 0, 0);
+    }
+
+    .countdown {
+        margin-top: 80px;
+        font-size: 2rem;
+        text-align: center;
+    }
+</style>
+<body>
+    <div class="heart"></div>
+    <div class="countdown" id="countdown">Countdown Timer</div>
+
+    <script>
+        // Set the target date
+        const targetDate = new Date("2024-12-16T23:59:59").getTime();
+
+        // Update the countdown every second
+        const countdownInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const timeLeft = targetDate - now;
+
+            if (timeLeft > 0) {
+                // Time calculations
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                // Display the countdown
+                document.getElementById("countdown").innerHTML = 
+                    `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            } else {
+                // If the countdown is over
+                clearInterval(countdownInterval);
+                window.location.href = "/page1.html";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
