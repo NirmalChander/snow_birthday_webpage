@@ -4,15 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My ❤️</title>
-    <link rel="preload" href="font1.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+     <!-- Preload font -->
+     <link rel="preload" href="font1.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
-    <script type="module">
-        import { balloons } from 'https://cdn.jsdelivr.net/npm/balloons-js@0.0.1/+esm';
-        window.onload = () => {
-          balloons({ count: 15 });
-          balloons({ count: 15 }); // Add floating balloons
-        };
-      </script>
+     <!-- Preload balloon and butterfly scripts -->
+     <link rel="preload" href="https://cdn.jsdelivr.net/npm/balloons-js@0.0.1/+esm" as="script">
+     <link rel="preload" href="https://unpkg.com/threejs-toys@0.0.8/build/threejs-toys.module.cdn.min.js" as="script">
+ 
+     <!-- Preload butterfly texture -->
+     <link rel="preload" href="texture.png" as="image">
+ 
+     <script type="module">
+         import { balloons } from 'https://cdn.jsdelivr.net/npm/balloons-js@0.0.1/+esm';
+         window.onload = () => {
+             balloons({ count: 15 });
+             balloons({ count: 15 }); // Add floating balloons
+         };
+     </script>
     <style>
 
         @font-face {
@@ -119,7 +127,7 @@
                 { type: 'directional', params: [0xffffff, 1], props: { position: [20, 0, 0] } }
             ],
             materialParams: { transparent: true, alphaTest: 0.5 },
-            texture: 'https://assets.codepen.io/33787/butterflies.png',
+            texture: 'texture.png',
             textureCount: 4,
             wingsScale: [1, 1, 1],
             wingsWidthSegments: 16,
