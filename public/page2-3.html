@@ -2,186 +2,194 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My ❤️</title>
-  <style>
-    @font-face {
-      font-family: 'CustomFont';
-      src: url('font2.ttf');
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My ❤️</title>
+    <style>
+        @font-face {
+            font-family: 'CustomFont';
+            src: url('font2.ttf');
+        }
 
-    @font-face {
-      font-family: 'HandwrittenFont';
-      src: url('font3.ttf');
-      /* Replace with a handwriting-style font */
-    }
+        @font-face {
+            font-family: 'HandwrittenFont';
+            src: url('font3.ttf');
+            /* Replace with a handwriting-style font */
+        }
 
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'CustomFont', 'Cursive', Arial, sans-serif;
-      color: #4b2c1a;
-      background-color: #f5f5ea;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      min-height: 100vh;
-    }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'CustomFont', 'Cursive', Arial, sans-serif;
+            color: #4b2c1a;
+            background-color: #f5f5ea;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-    .letter-container {
-      width: 100%;
+        /* Very light golden glow for text */
+        .glow-text {
+            text-shadow: 
+                0 0 3px rgba(255, 223, 150, 0.3),   /* Subtle light golden glow */
+                0 0 6px rgba(255, 223, 150, 0.4),
+                0 0 9px rgba(255, 223, 150, 0.5);    /* Light, gentle glow */
+        }
 
-      background:
-        url('letter-top.jpg') no-repeat top,
-        /* Top part */
-        url('letter-middle.jpg') repeat-y center;
-      /* Middle repeating part */
-      background-size: 100% auto;
-      padding: 13%;
+        .letter-container {
+            width: 100%;
 
-      margin-bottom: 0;
-      padding-bottom: 0;
-      position: relative;
-      box-sizing: border-box;
-    }
+            background:
+                url('letter-top.jpg') no-repeat top,
+                /* Top part */
+                url('letter-middle.jpg') repeat-y center;
+            /* Middle repeating part */
+            background-size: 100% auto;
+            padding: 13%;
 
-    .letter-content {
-      line-height: 1.5rem;
-      font-size: 1.5rem;
-      word-wrap: break-word;
-    }
+            margin-bottom: 0;
+            padding-bottom: 0;
+            position: relative;
+            box-sizing: border-box;
+        }
 
-    .wish {
-      margin-top: 30px;
-      font-size: 1.9rem;
-      text-align: center;
-    }
+        .letter-content {
+            line-height: 1.5rem;
+            font-size: 1.5rem;
+            word-wrap: break-word;
+        }
 
-    .bold {
-      font-size: 1.9rem;
-    }
+        .wish {
+            margin-top: 30px;
+            font-size: 1.9rem;
+            text-align: center;
+        }
 
-    .bottom-section {
-      width: 100%;
+        .bold {
+            font-size: 1.9rem;
+        }
 
-      background: url('letter-bottom.jpg') no-repeat bottom;
-      background-size: 100% auto;
-      padding: 13%;
-      padding-top: 15%;
-      text-align: center;
-      box-sizing: border-box;
-      /* Slight overlap for seamless transition */
-    }
+        .bottom-section {
+            width: 100%;
 
-    .signature {
-      font-size: 1.6rem;
-      text-align: right;
-      padding: 0;
-      margin: 0;
-    }
+            background: url('letter-bottom.jpg') no-repeat bottom;
+            background-size: 100% auto;
+            padding: 13%;
+            padding-top: 15%;
+            text-align: center;
+            box-sizing: border-box;
+            /* Slight overlap for seamless transition */
+        }
 
-    .signature2 {
-      font-family: 'HandwrittenFont', 'Cursive', Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      margin-right: 35px;
-      font-size: 3rem;
-      text-align: right;
-    }
+        .signature {
+            font-size: 1.6rem;
+            text-align: right;
+            padding: 0;
+            margin: 0;
+        }
 
-    .button-container {
-      margin-top: 20px;
-    }
+        .signature2 {
+            font-family: 'HandwrittenFont', 'Cursive', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            margin-right: 35px;
+            font-size: 3rem;
+            text-align: right;
+        }
 
-    .next-button {
-      padding: 10px 20px;
-      font-size: 1.7rem;
-      font-family: CustomFont;
-      background: none;
-      border: none;
-      color: #4b2c1a;
-      cursor: pointer;
-      animation: sparkle 3s alternate infinite;
-    }
+        .button-container {
+            margin-top: 20px;
+        }
 
-    @keyframes sparkle {
-      from {
-        text-shadow: 0 0 10px #00000000, 0 0 20px #00000000, 0 0 30px #00000000;
-      }
+        .next-button {
+            padding: 10px 20px;
+            font-size: 1.7rem;
+            font-family: CustomFont;
+            background: none;
+            border: none;
+            color: #4b2c1a;
+            cursor: pointer;
+            animation: sparkle 3s alternate infinite;
+        }
 
-      to {
-        text-shadow: 0 0 10px #ffd00070, 0 0 20px #ffd00070, 0 0 30px #ffd00070;
-      }
-    }
-  </style>
+        @keyframes sparkle {
+            from {
+                text-shadow: 0 0 10px #00000000, 0 0 20px #00000000, 0 0 30px #00000000;
+            }
+
+            to {
+                text-shadow: 0 0 10px #ffae00ab, 0 0 20px #ffd00070, 0 0 30px #ffd00070;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <div class="letter-container">
-    <div class="letter-content">
-      <div class="bold">
-        <p>Dear Snow,</p>
-      </div>
-      <p>
-        From the very first moment I met you, I knew there was something extraordinary about you.
-        Your laughter is the kind of melody that brightens even the dullest days.
-      </p>
-      <p>
-        You are an angel in human form—a source of light, kindness, and beauty in this world.
-        Every conversation with you, every shared moment, feels like a precious gift.
-      </p>
-      <p>
-        Today, as the world celebrates your special day, I find myself craving to be there with you,
-        to see your laughter, to share your joy, and to make this day as beautiful as you are.
-        It pains me that I can’t celebrate with you in person, but know that my heart is with you every moment.
-      </p>
-      <p>
-        I am endlessly grateful to have you in my life.
-      </p>
-      <p>
-        You are not just beautiful—you are stunning, both inside and out. You make life feel magical,
-        and I feel so fortunate to be a part of your journey. If there’s one thing I wish for you today,
-        it’s to know how special you are to me.
-      </p>
-      <p>
-        Thank you for being the incredible person you are.
-      </p>
-      <p>
-        Every moment with you is like living in a beautiful dream.
-      </p>
-      <p>
-        You’re a treasure, a gift lucky enough to know you.
-      </p>
-      <p>
-        You are, and always will be, the most important person in my life.
-      </p>
-      <div class="wish">
-      </br>
-        <p>Happy Birthday, Snow.</p>
-      </div>
-      <div class="signature">
-      </br>
-        With all my love,
-      </div>
-      <div class="signature signature2">
-        <br>Nirmal
-      </div>
+    <div class="letter-container">
+        <div class="letter-content  glow-text">
+            <div class="bold">
+                <p>Dear Snow,</p>
+            </div>
+            <p>
+                From the very first moment I met you, I knew there was something extraordinary about you.
+                Your laughter is the kind of melody that brightens even the dullest days.
+            </p>
+            <p>
+                You are an angel in human form—a source of light, kindness, and beauty in this world.
+                Every conversation with you, every shared moment, feels like a precious gift.
+            </p>
+            <p>
+                Today, as the world celebrates your special day, I find myself craving to be there with you,
+                to see your laughter, to share your joy, and to make this day as beautiful as you are.
+                It pains me that I can’t celebrate with you in person, but know that my heart is with you every moment.
+            </p>
+            <p>
+                I am endlessly grateful to have you in my life.
+            </p>
+            <p>
+                You are not just beautiful—you are stunning, both inside and out. You make life feel magical,
+                and I feel so fortunate to be a part of your journey. If there’s one thing I wish for you today,
+                it’s to know how special you are to me.
+            </p>
+            <p>
+                Thank you for being the incredible person you are.
+            </p>
+            <p>
+                Every moment with you is like living in a beautiful dream.
+            </p>
+            <p>
+                You’re a treasure, a gift lucky enough to know you.
+            </p>
+            <p>
+                You are, and always will be, the most important person in my life.
+            </p>
+            <div class="wish">
+                </br>
+                <p>Happy Birthday, Snow.</p>
+            </div>
+            <div class="signature">
+                </br>
+                With all my love,
+            </div>
+            <div class="signature signature2">
+                <br>Nirmal
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div class="bottom-section">
-    <div class="button-container">
-      <button class="next-button" onclick="proceed()">Tap to continue...</button>
+    <div class="bottom-section">
+        <div class="button-container">
+            <button class="next-button" onclick="proceed()">Tap to continue...</button>
+        </div>
     </div>
-  </div>
 
-  <script>
-    function proceed() {
-      window.location.href = "/page3.html"; // Replace with the actual route for the next page
-    }
-  </script>
+    <script>
+        function proceed() {
+            window.location.href = "/page3.html"; // Replace with the actual route for the next page
+        }
+    </script>
 </body>
 
 </html>
