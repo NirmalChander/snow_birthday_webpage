@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Envelope Page</title>
+  <style>
+
+    @font-face {
+      font-family: 'CustomFont';
+      src: url('font4.otf');
+    }
+
+    /* Global styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'CustomFont', 'Cursive', Arial, sans-serif;
+      color: #4b2c1a;
+      background-color: #f5f5ea;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      /* Hide overflow for animation */
+    }
+
+    /* Envelope styles */
+    .envelope-container {
+      position: relative;
+      width: 300px;
+      height: 200px;
+      background: url('envelope.png') no-repeat center center;
+      background-size: contain;
+      animation: shakeEnvelope 2s infinite ease-in-out;
+      cursor: pointer;
+      pointer-events: auto;
+    }
+
+    /* Slow shake animation for the envelope */
+    @keyframes shakeEnvelope {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      25% {
+        transform: rotate(-5deg);
+      }
+
+      50% {
+        transform: rotate(5deg);
+      }
+
+      75% {
+        transform: rotate(-5deg);
+      }
+
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+
+    /* Blinking "Tap to Open" text */
+    .tap-text {
+      font-size: 3rem;
+      color: #4b2c1a;
+      font-weight: bold;
+      text-align: center;
+      animation: blinkText 1s infinite alternate-reverse;
+      margin-top: 30px;
+    }
+
+    /* Blinking effect */
+    @keyframes blinkText {
+      0% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: .5;
+      }
+    }
+
+    /* Bright light effect */
+    .light-effect {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .bright-light {
+      opacity: 1;
+    }
+
+    /* Styling for the button container */
+    .button-container {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .next-button {
+      padding: 12px 30px;
+      font-size: 1.6rem;
+      font-family: 'CustomFont';
+      background-color: transparent;
+      border: 2px solid #4b2c1a;
+      color: #4b2c1a;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .next-button:hover {
+      background-color: #ffd700;
+    }
+  </style>
+</head>
+
+<body>
+  <div onclick="openEnvelope()">
+
+    <div class="envelope-container"></div>
+
+    <!-- Blinking "Tap to Open" text -->
+    <div class="tap-text">Tap to Open</div>
+
+    <!-- Light effect div -->
+    <div class="light-effect" id="light-effect"></div>
+  </div>
+
+  <script>
+    // Function to trigger the bright light effect and show the "Next" button
+    function openEnvelope() {
+      // Show the bright light effect
+      const lightEffect = document.getElementById('light-effect');
+      lightEffect.classList.add('bright-light');
+
+      // Show the "Next" button after the light effect is triggered
+      setTimeout(() => {
+        document.getElementById('next-button').style.display = 'inline-block';
+      }, 1000); // Wait for the light effect to start before showing the button
+      setInterval(proceed, 1000)
+    }
+
+    // Function to go to the next page
+    function proceed() {
+      window.location.href = "/page3.html";
+      // Replace with the actual route for the next page
+    }
+  </script>
+</body>
+
+</html>
