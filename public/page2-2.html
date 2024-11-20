@@ -16,14 +16,14 @@
             overflow: hidden;
             height: 100vh;
             background-color: black;
-            font-family: CustomFont,'Cursive', Arial, sans-serif;
+            font-family: CustomFont, 'Cursive', Arial, sans-serif;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
         }
 
-        
+
         .background {
             position: absolute;
             top: 0;
@@ -34,11 +34,15 @@
             background-size: cover;
             background-position: center;
             z-index: 1;
-            transition: opacity 1s ease; /* Smooth fade effect */
+            transition: opacity 1s ease;
+            /* Smooth fade effect */
         }
 
+
+
         .background.hidden {
-            opacity: .1; /* Hide the background during transition */
+            opacity: .1;
+            /* Hide the background during transition */
         }
 
         .slideshow-container {
@@ -53,8 +57,21 @@
             height: 100%;
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
             opacity: 0;
             transition: opacity 1.5s ease-in-out;
+        }
+
+        /* For tablet and desktop views */
+        @media (min-width: 768px) {
+            .slide {
+                background-size: contain;
+                /* Ensure the entire image is visible */
+                background-position: center;
+                /* Center the image for these views */
+                background-color: black;
+                /* Fill empty spaces with black */
+            }
         }
 
         .slide.active {
@@ -108,11 +125,12 @@
         }
 
 
-        
+
         @keyframes sparkle {
             from {
                 text-shadow: 0 0 10px #4c00ff, 0 0 20px #5900ff, 0 0 30px #ff00006b;
             }
+
             to {
                 text-shadow: 0 0 10px #ffd000b7, 0 0 20px #ffd000ec, 0 0 30px #ff5100b7;
             }
@@ -124,7 +142,7 @@
     <div class="background" id="background"></div>
     <div class="slideshow-container">
         <!-- Slides will be dynamically added here -->
-         
+
         <div class="caption" id="caption"></div>
     </div>
 

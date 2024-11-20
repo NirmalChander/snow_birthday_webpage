@@ -77,7 +77,8 @@
             background: url('letter-bottom.jpg') no-repeat bottom;
             background-size: 100% auto;
             padding: 13%;
-            padding-top: 15%;
+            padding-top: 3%;
+            padding-bottom: 23%;
             text-align: center;
             box-sizing: border-box;
             /* Slight overlap for seamless transition */
@@ -100,11 +101,11 @@
         }
 
         .button-container {
-            margin-top: 20px;
+            margin-top: 0px;
         }
 
         .next-button {
-            padding: 10px 20px;
+            padding: 10px 0px;
             font-size: 1.7rem;
             font-family: CustomFont;
             background: none;
@@ -123,6 +124,28 @@
                 text-shadow: 0 0 10px #ffae00ab, 0 0 20px #ffd00070, 0 0 30px #ffd00070;
             }
         }
+
+        /* For tablet and desktop views */
+    @media (min-width: 768px) {
+        .letter-content {
+            padding: 6%;
+            line-height: 1.5rem;
+            font-size: 2rem;
+            word-wrap: break-word;
+        }
+        .next-button {
+            padding: 10px 0px;
+            margin-top: 0;
+            padding-top: 0;
+            font-size: 2.3rem;}
+
+        
+        .bottom-section {
+            padding: 13%;
+            padding-top: 0;
+            padding-bottom: 36%;
+        }
+    }
     </style>
 </head>
 
