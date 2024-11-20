@@ -8,9 +8,8 @@
      <link rel="preload" href="font1.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
      <!-- Preload balloon and butterfly scripts -->
-     <link rel="preload" href="https://cdn.jsdelivr.net/npm/balloons-js@0.0.1/+esm" as="script">
-     <link rel="preload" href="https://unpkg.com/threejs-toys@0.0.8/build/threejs-toys.module.cdn.min.js" as="script">
- 
+     <link rel="preconnect" href="https://cdn.jsdelivr.net">
+     <link rel="preconnect" href="https://unpkg.com">
      <!-- Preload butterfly texture -->
      <link rel="preload" href="texture.png" as="image">
  
@@ -26,6 +25,9 @@
         @font-face {
             font-family: font1;
             src: url('font1.ttf');
+        }
+        html{
+            background-color: #6dd0f1;
         }
         body, html, #app {
             margin: 0;
@@ -119,12 +121,12 @@
         const pc = butterfliesBackground({
             el: document.getElementById('app'),
             eventsEl: document.body,
-            gpgpuSize: 15,
+            gpgpuSize: 10,
             background: 0x6dd0f1 ,
             material: 'phong', // or 'standard'
             lights: [
                 { type: 'ambient', params: [0xffffff, 0.5] },
-                { type: 'directional', params: [0xffffff, 1], props: { position: [20, 0, 0] } }
+                { type: 'directional', params: [0xffffff, 1], props: { position: [10, 0, 0] } }
             ],
             materialParams: { transparent: true, alphaTest: 0.5 },
             texture: 'texture.png',
@@ -133,13 +135,13 @@
             wingsWidthSegments: 16,
             wingsHeightSegments: 16,
             wingsSpeed: 0.8,
-            wingsDisplacementScale: 1.25,
-            noiseCoordScale: 0.01,
-            noiseTimeCoef: 0.0005,
-            noiseIntensity: 0.0025,
+            wingsDisplacementScale: 1.,
+            noiseCoordScale: 0.1,
+            noiseTimeCoef: 0.05,
+            noiseIntensity: 0.0055,
             attractionRadius1: 60,
             attractionRadius2: 100,
-            maxVelocity: 0.25
+            maxVelocity: 0.15
         });
     </script>
 </body>
