@@ -26,7 +26,6 @@
             color: white;
         }
 
-
         .background {
             position: absolute;
             top: 0;
@@ -38,14 +37,18 @@
             background-position: center;
             background-repeat: no-repeat;
             z-index: 1;
-            transition: opacity 1s ease;
-            /* Smooth fade effect */
         }
 
-        
+        .slideshow-container {
+            z-index: 2;
+            height: 100vh;
+            width: 100vw;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0));
+        }
+
         .caption {
             position: absolute;
-            bottom: 02%;
+            bottom: 2%;
             left: 50%;
             transform: translateX(-50%);
             font-size: 2.3rem;
@@ -53,44 +56,57 @@
             color: #ff9de1;
             padding: 50px 0px;
             border-radius: 10px;
-            -webkit-text-stroke: .3px #000000;
+            -webkit-text-stroke: 0.3px #000000;
             animation: fadeInOut 5s ease-in-out infinite;
             z-index: 5;
-            text-shadow: 5px 05px 05px #27001b;
+            text-shadow: 5px 5px 5px #27001b;
         }
 
         @media (min-width: 768px) {
             .background {
                 background-size: contain;
-                /* Ensure the entire image is visible */
                 background-position: center;
-                /* Center the image for these views */
                 background-color: black;
-                /* Fill empty spaces with black */
             }
         }
-</style>
+    </style>
+</head>
 
 <body>
     <div class="background" id="background"></div>
-    <div class="slideshow-container">
-        <!-- Slides will be dynamically added here -->
-
+    <div class="slideshow-container" id="slideshow">
         <div class="caption" id="caption">"Flowers don’t feel jealous because the girl reading this is more beautiful than all of you. 💐"</div>
     </div>
 
     <script>
-         function proceed() {
-            // Trigger the fade-out effect by changing the opacity of the body
-            document.body.style.opacity = '20'; // Fade out the entire body
+        function proceed() {
+            const slideshow = document.getElementById('slideshow');
+            let gradientOpacity = 0; // Start with transparent gradient
+            const fadeInterval = 50; // Interval time in milliseconds
+            const fadeDuration = 2500; // Total fade duration in milliseconds
+            const maxOpacity = 1; // Final gradient opacity
 
-            // After fade-out animation, navigate to the next page
+            // Gradually increase the gradient opacity
+            const interval = setInterval(() => {
+                gradientOpacity += fadeInterval / fadeDuration; // Increment opacity proportionally
+                if (gradientOpacity >= maxOpacity) {
+                    gradientOpacity = maxOpacity; // Cap at max opacity
+                    clearInterval(interval); // Stop the interval once max opacity is reached
+                }
+
+                // Update gradient background with current opacity
+                slideshow.style.background = `linear-gradient(to bottom, rgba(0, 0, 0, ${gradientOpacity / 2}), rgba(0, 0, 0, ${gradientOpacity}))`;
+            }, fadeInterval);
+
+            // After the fade-out completes, navigate to the next page
             setTimeout(() => {
                 window.location.href = "/page3.html"; // Replace with the actual route for the next page
-            }, 2000); // Wait for 2 seconds (duration of fade-out animation)
+            }, fadeDuration);
         }
 
-        setTimeout(proceed, 7000);
+        // Trigger fade-out and gradient-to-black transition after 10 seconds
+        setTimeout(proceed, 10000);
     </script>
 </body>
-</head>
+
+</html>
